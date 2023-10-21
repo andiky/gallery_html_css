@@ -1,0 +1,191 @@
+@font-face {
+    font-family: "BebasNeue";
+    src: url("../font/BebasNeue-Regular.woff") format("woff");
+}
+
+body {
+    font: 18px/32px "BebasNeue", "Arial Narrow", arial, sans-serif;
+    background-color: #DCDCDC;
+}
+
+h1 {
+    font-size: 100px;
+    font-weight: bold;
+    margin: 50px 0;
+    text-align: center;
+    text-shadow: 0 5px 5px white;
+}
+
+.container {
+    width: 600px;
+    margin: auto;
+    background-color: white;
+    border: 2px solid #696969;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 5px #808080;
+    padding: 30px;
+    position: relative;
+}
+
+.gallery li {
+    width: 120px;
+    height: 120px;
+    border: 3px solid #666;
+    margin-right: 24px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+}
+
+.gallery li, .gallery li a img, .gallery li span {
+    border-radius: 50%;
+}
+
+.gallery li span {
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(200, 200, 200, 0.5);
+    color: #333;
+    position: absolute;
+    text-align: center;
+    line-height: 120px;
+    text-shadow: 1px 1px 1px white;
+    top: 0;
+    opacity: 0;
+    scale: 0;
+    rotate: 0;
+    transition: 0.3s;
+}
+
+.gallery li a:hover span {
+    opacity: 1;
+    rotate: 360deg;
+    scale: 1;
+}
+
+.clear {
+    clear: both;
+}
+
+.overlay {
+    width: 0;
+    height: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0);
+    position: fixed;
+    padding: 100px;
+    text-align: center;
+    top: 0;
+    left: 0;
+    transition: 0.8s;
+}
+
+.overlay img {
+    height: 100%;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.5);
+}
+
+.overlay:target {
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.overlay:target img {
+    animation: imageScale 0.5s;
+}
+
+.overlay .close {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    margin-left: -20px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border: 1px solid white;
+    line-height: 14px;
+    padding: 5px;
+    opacity: 0;
+}
+
+.overlay:target .close {
+    animation: close .5s .5s forwards;
+}
+
+.nav, .nav1, .nav2, .nav3 {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    bottom: 70px;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.nav1 {
+    margin-left: -40px;
+}
+
+.nav2 {
+    margin-left: 20px;
+}
+
+.nav3 {
+    margin-left: 80px;
+}
+
+.nav:hover,
+.nav1:hover,
+.nav2:hover,
+.nav3:hover {
+    background-color: black;
+    transform: scale(1.5);
+}
+
+.overlay:target .nav,
+.overlay:target .nav1,
+.overlay:target .nav2,
+.overlay:target .nav3 {
+    animation: nav .5s .5s forwards;
+}
+
+@keyframes nav {
+    0%{
+        opacity: 0;
+        margin-bottom: -20px;
+    }
+    100%{
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+
+@keyframes imageScale {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes close {
+    0%{
+        opacity: 0;
+        margin-top: -20px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 0;
+    }
+}
